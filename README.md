@@ -15,7 +15,9 @@ This script partly consists of Wikipedia Extractor.
 `./build.sh jawiki-20141122 [0 or 1]`  
 (1はスペース区切りありの言語、0は区切りなしの言語)
 
-## 出力ファイル（text/ 以下に生成）
+## 出力ファイル
+
+text/ 以下に生成
 
 * page: 各行ごとに「ページID、ページタイトル、ページの文字数」
 * basepage（英語のみ）: pageのうち、同名のカテゴリを持つもの
