@@ -29,7 +29,9 @@ This script partly consists of Wikipedia Extractor.
 
 ## Tips
 
-英語のダンプデータとかだとサイズが大きいので丸1日近くかかるんじゃないでしょうか。
+英語のダンプデータとかだとサイズが大きいので丸1日ぐらいかかるんじゃないでしょうか。  
+日本語（jawiki-20141122）だと3時間ぐらいでした。  
+(Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz)
 
 ## License
 
