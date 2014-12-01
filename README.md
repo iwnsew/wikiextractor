@@ -3,7 +3,7 @@
 Wikipediaのダンプデータからページやリンクなどの情報をアレするスクリプト。  
 python2.7系で動く。動くぞ。2.6系はダメだぞ。他は知らん。
 
-Powered by Wikipedia Extractor  
+This script partly consists of Wikipedia Extractor.  
 <http://medialab.di.unipi.it/wiki/Wikipedia_Extractor>
 
 ## 使い方
