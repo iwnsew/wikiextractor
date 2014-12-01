@@ -9,7 +9,7 @@ Powered by Wikipedia Extractor
 ## 使い方
 
 1. wikiextractor/dumpディレクトリにWikipediaのダンプデータを置く。  
-ダンプデータは「jawiki20141122-pages-articles.xml.bz2」とかいう形式だ。  
+ダンプデータは「jawiki-20141122-pages-articles.xml.bz2」とかいう形式だ。  
 ダンプデータ: <https://dumps.wikimedia.org/jawiki>
 2. build.shを実行。引数の指定の仕方は以下のとおり。  
 `./build.sh jawiki-20141122 [0 or 1]`  
@@ -26,6 +26,10 @@ Powered by Wikipedia Extractor
 * bonus-link: 各行ごとに「アンカーテキスト（正規化）、リンク元ページID、頻度」、ESA用
 
 なお、正規化とは、ユニコード正規化処理（NFKC）を行っていることを指す。
+
+## Tips
+
+英語のダンプデータとかだとサイズが大きいので
 
 ## License
 
