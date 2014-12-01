@@ -8,7 +8,7 @@ Powered by Wikipedia Extractor
 
 ## 使い方
 
-1. wikiextractor/dumpディレクトリにWikipediaのダンプデータを置く。  
+1. dumpディレクトリにWikipediaのダンプデータを置く。  
 ダンプデータは「jawiki-20141122-pages-articles.xml.bz2」とかいう形式だ。  
 ダンプデータ: <https://dumps.wikimedia.org/jawiki>
 2. build.shを実行。引数の指定の仕方は以下のとおり。  
