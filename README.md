@@ -29,7 +29,7 @@ Powered by Wikipedia Extractor
 
 ## Tips
 
-英語のダンプデータとかだとサイズが大きいので
+英語のダンプデータとかだとサイズが大きいので丸1日近くかかるんじゃないでしょうか。
 
 ## License
 
