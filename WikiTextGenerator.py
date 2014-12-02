@@ -31,10 +31,10 @@ for line in fw:
       continue
     if not len(ts) > 7:
       titletoid[title.lower()] = ts[1]
-      print title + ' -> ' + ts[1]
+      print title.encode('utf-8') + ' -> ' + ts[1].encode('utf-8')
     else:
       titletortitle[title.lower()] = ts[7]
-      print title + ' -> ' + ts[7] + ' [redirect]'
+      print title.encode('utf-8') + ' -> ' + ts[7].encode('utf-8') + ' [redirect]'
 
 fw.close()
 
@@ -100,7 +100,7 @@ for line in fw:
     linkstopages.clear()
     categories.clear()
     text = ''
-    print page + ' done!'
+    print page.encode('utf-8') + ' done!'
   elif redirect == '' and page.find('Category:', 0, 9) == -1:
     matches = reglink.findall(line)
     for match in matches:
