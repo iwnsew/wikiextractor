@@ -32,11 +32,11 @@ text/以下に生成
 
 ## カテゴリ同名ページ抽出
 
-build.shのかわりにbuildBP.shを使うとbasepageも抽出できる。何に使うんだ。
+build.shのかわりにbuildBP.shを使うと同名のカテゴリを持つページも抽出できる。
 
 * *basepage*: pageのうち、同名のカテゴリを持つもの
 
-括弧による表記揺れ、複数形（英語のみ）による表記揺れ処理済。  
+括弧による表記揺れ、複数形（英語のみ対応）による表記揺れ処理済。  
 なお、英語の複数形の処理には inflection (`pip install inflection`) が必要。
 
 ## Tips

@@ -113,7 +113,7 @@ for line in fw:
         pagename = ' '.join(p)
       if pagename in categories:
         fbp.write(pid + '\t' + page + '\t' + str(len(text)) + '\n')
-      else if isenglish == 1:
+      elif isenglish == 1:
         p[len(p)-1] = inflection.pluralize(p[len(p)-1])
         pagename = ' '.join(p)
         if pagename in categories:
