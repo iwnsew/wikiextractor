@@ -5,7 +5,6 @@ import codecs
 import re
 import sys
 import unicodedata
-import inflection
 
 argvs = sys.argv
 if len(argvs) != 3 and len(argvs) != 4:
@@ -19,6 +18,7 @@ if len(argvs) == 4 and argvs[3] == '1':
   isword = 1
 isenglish = 0
 if wiki.find('enwiki') != -1:
+  import inflection
   isenglish = 1
   sys.stderr.write('Input is English.\n')
 
@@ -103,22 +103,21 @@ for line in fw:
         fl.write(k + '\t' + pid + '\t' + str(v) + '\n')
 
     #explicit dimension reduction
-    if isenglish == 1:
-      pagename = page.lower();
+    pagename = page.lower();
+    if pagename in categories:
+      fbp.write(pid + '\t' + page + '\t' + str(len(text)) + '\n')
+    else:
+      p = pagename.split(' ')
+      if len(p) > 1 and p[len(p)-1].find('(') != -1:
+        p.pop()
+        pagename = ' '.join(p)
       if pagename in categories:
         fbp.write(pid + '\t' + page + '\t' + str(len(text)) + '\n')
-      else:
-        p = pagename.split(' ')
-        if len(p) > 1 and p[len(p)-1].find('(') != -1:
-          p.pop()
-          pagename = ' '.join(p)
+      else if isenglish == 1:
+        p[len(p)-1] = inflection.pluralize(p[len(p)-1])
+        pagename = ' '.join(p)
         if pagename in categories:
           fbp.write(pid + '\t' + page + '\t' + str(len(text)) + '\n')
-        else:
-          p[len(p)-1] = inflection.pluralize(p[len(p)-1])
-          pagename = ' '.join(p)
-          if pagename in categories:
-            fbp.write(pid + '\t' + page + '\t' + str(len(text)) + '\n')
 
     links.clear()
     linkstopages.clear()
