@@ -5,6 +5,7 @@ import codecs
 import re
 import sys
 import unicodedata
+import inflection
 
 argvs = sys.argv
 if len(argvs) != 3 and len(argvs) != 4:
@@ -16,6 +17,10 @@ out = argvs[2]
 isword = 0
 if len(argvs) == 4 and argvs[3] == '1':
   isword = 1
+isenglish = 0
+if wiki.find('enwiki') != -1:
+  isenglish = 1
+  sys.stderr.write('Input is English.\n')
 
 titletoid = {}
 titletortitle = {}
@@ -42,6 +47,7 @@ fw = codecs.open(wiki, 'r', 'utf-8')
 ft = codecs.open(out + '/text', 'w', 'utf-8')
 ftm = codecs.open(out + '/term', 'w', 'utf-8')
 fp = codecs.open(out + '/page', 'w', 'utf-8')
+fbp = codecs.open(out + '/basepage', 'w', 'utf-8')
 fbt = codecs.open(out + '/bonus-title', 'w', 'utf-8')
 fbl = codecs.open(out + '/bonus-link', 'w', 'utf-8')
 fl = codecs.open(out + '/link', 'w', 'utf-8')
@@ -95,6 +101,24 @@ for line in fw:
         fbl.write(k + '\t' + pid + '\t' + str(v) + '\n')
       for k, v in linkstopages.items():
         fl.write(k + '\t' + pid + '\t' + str(v) + '\n')
+
+    #explicit dimension reduction
+    if isenglish == 1:
+      pagename = page.lower();
+      if pagename in categories:
+        fbp.write(pid + '\t' + page + '\t' + str(len(text)) + '\n')
+      else:
+        p = pagename.split(' ')
+        if len(p) > 1 and p[len(p)-1].find('(') != -1:
+          p.pop()
+          pagename = ' '.join(p)
+        if pagename in categories:
+          fbp.write(pid + '\t' + page + '\t' + str(len(text)) + '\n')
+        else:
+          p[len(p)-1] = inflection.pluralize(p[len(p)-1])
+          pagename = ' '.join(p)
+          if pagename in categories:
+            fbp.write(pid + '\t' + page + '\t' + str(len(text)) + '\n')
 
     links.clear()
     linkstopages.clear()
@@ -164,6 +188,7 @@ fw.close()
 ft.close()
 ftm.close()
 fp.close()
+fbp.close()
 fbt.close()
 fbl.close()
 fl.close()
